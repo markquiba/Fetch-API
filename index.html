@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Fetch Api | Vanilla JavaScript</title>
+</head>
+<body>
+	<h3>Number facts</h3>
+	<input type="number" id="inputNumber">
+	<div id="output"></div>
+	<script type="text/javascript">
+		var inputNumber = document.getElementById('inputNumber');
+		var output = document.getElementById('output');
+		inputNumber.addEventListener('input', getFactApi);
+		function getFactApi() {
+			let number = inputNumber.value;
+			fetch('http://numbersapi.com/'+number)
+			.then(res => res.text())
+			.then(data => {
+				if (number != '') {
+					output.innerHTML = data;
+				}
+			})
+			.catch(err => console.log(err))
+		}
+	</script>
+</body>
+</html>
